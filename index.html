@@ -1,133 +1,757 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORTFOLIO</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Portfolio</title>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#000000',
+                        card: '#000000',
+                        primary: '#D4AF37',
+                        accent: '#FFDF00',
+                        textMain: '#F5F5F5',
+                        textSec: '#A3A3A3',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="bg-dark text-textSec font-sans overflow-x-hidden relative">
 
-    <header>
-        <div id="menu-icon">
-            <div class="home">
-                <nav>
-                    <a href="#" class="logo">PORT<span>FOLIO</span></a>
-                    <div class="menu-toggle" id="menu-toggle"> ☰
-                    </div>
-                    <ul id="nav-links">
-                        <li><a href="#menu-icon">HOME</a></li>
-                        <li><a href="#about">ABOUT</a></li>
-                        <li><a href="#skills">SKILLS</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
-                    </ul>
-                </nav>
-                <div class="content">
-                    <h4>Hello, my name is </h4>
-                    <h1>Raj<span>Thakur</span></h1>
-                    <h3>I am Frontend Developer</h3>
-                    <a href="RESUME.pdf" class="btn" download="#">DOWNLOAD
-                        CV</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid"></div>
 
-
-    <!-- <------------------------------------------------------------------------------------>
-
-    <section class="about" id="about">
-        <div class="main">
-            <img src="IMG_0082.JPG">
-            <div class="about-text">
-
-                <h2>About <span>Me</span></h2>
-                <h5>Frontend <span>Developer</span></h5>
-                <p>First of all, thank you for giving me this opportunity to introduce myself My name is <b><span>Raj
-                            Thakur</span></b>. I am from Indore, I have run my bachelor's degree on Btech.CSE from Sage
-                    University. I belong to a middle class family. My hobbies are listening music and My strengths are I
-                    am hard working and self motivating person and I have strong communication skill. My short term goal
-                    is to get job in reputed company and I can build my career. That's all About me,THANKYOU.</p>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- <------------------------------------------------------------------------------------>
-
-    <div id="skills">
-        <div class="heading">My<span> Skills</span></div>
-        <div class="skills-container">
-            <div class="skills-box">
-                <div>
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h3>C,C++</h3>
-                    <P>Proficient in C and C++ with a strong understanding of procedural and object-oriented programming
-                        concepts. </P>
-
-                </div>
-
-                <div>
-                    <i class="fa-brands fa-java"></i>
-                    <h3>JAVA,PYTHON</h3>
-                    <P>Good understanding of Java basics, OOP concepts, and core libraries and also Comfortable with
-                        Python syntax, scripting, and basic data handling.</P>
-
-                </div>
-
-                <div>
-                    <i class="fa-solid fa-web-awesome"></i>
-                    <h3>FRONTEND</h3>
-                    <P>Skilled in HTML, CSS, and JavaScript for building responsive web pages.
-                        Familiar with modern design practices and basic animation using CSS and JS.</P>
-
-                </div>
-            </div>
-        </div>
+    <div id="spotlight"
+        class="fixed top-0 left-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 mix-blend-screen transition-transform duration-75 ease-out">
     </div>
 
-    <!-- <------------------------------------------------------------------------------------>
+    <nav class="fixed w-full z-50 top-0 border-b border-primary/10 bg-dark/90 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-textMain tracking-tight"><span
+                    class="gold-shine">PORTFOLIO</span></a>
 
-    <section class="contact" id="contact">
-        <h2 class="head">Contact Me</h2>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home"
+                    class="text-textMain hover:text-primary transition-colors font-medium text-xs uppercase tracking-widest">Home</a>
+                <a href="#about"
+                    class="text-textMain hover:text-primary transition-colors font-medium text-xs uppercase tracking-widest">About</a>
+                <a href="#skills"
+                    class="text-textMain hover:text-primary transition-colors font-medium text-xs uppercase tracking-widest">Skills</a>
+                <a href="#projects"
+                    class="text-textMain hover:text-primary transition-colors font-medium text-xs uppercase tracking-widest">Projects</a>
+                <a href="#certifications"
+                    class="text-textMain hover:text-primary transition-colors font-medium text-xs uppercase tracking-widest">Certifications</a>
+                <a href="#contact"
+                    class="px-6 py-2 border border-primary text-primary text-xs uppercase tracking-widest hover:bg-primary hover:text-dark transition-all font-bold">Contact</a>
+            </div>
 
-        <form method="post"
-            action="https://script.google.com/macros/s/AKfycbzbWYGO0cA4_Ifan0RlmYYz3d-KiqKXOPdLv9r9AgOR7ZGq1QKDkmgqSFcD7Zc6gIEkAg/exec"
-            name="contact-form" id="contact-form">
-            <div class="input-box">
-                <input type="text" name="Full Name" placeholder="FULL NAME" required>
-                <input type="text" name="Phone Number" placeholder="PHONE NUMBER" required>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-primary cursor-pointer focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-dark/95 backdrop-blur-xl border-t border-primary/10 absolute w-full left-0 top-full shadow-lg">
+            <ul class="flex flex-col p-6 space-y-4 text-center font-medium">
+                <li><a href="#home" class="block text-textMain hover:text-primary transition-colors">Home</a></li>
+                <li><a href="#about" class="block text-textMain hover:text-primary transition-colors">About</a></li>
+                <li><a href="#skills" class="block text-textMain hover:text-primary transition-colors">Skills</a></li>
+                <li><a href="#projects" class="block text-textMain hover:text-primary transition-colors">Projects</a>
+                </li>
+                <li><a href="#certifications"
+                        class="block text-textMain hover:text-primary transition-colors">Certifications</a></li>
+                <li><a href="#contact" class="gold-shine">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home"
+        class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 z-10 perspective-container overflow-hidden bg-black">
+
+        <div
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-t from-[#D4AF37]/10 to-transparent pointer-events-none z-0">
+        </div>
+
+        <div
+            class="absolute top-1/3 left-1/4 w-2 h-2 bg-[#D4AF37] rounded-full animate-float opacity-60 shadow-[0_0_10px_#D4AF37] z-20">
+        </div>
+        <div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-[#D4AF37] rounded-full animate-float opacity-20 blur-[2px] z-0"
+            style="animation-delay: 2s;"></div>
+        <div class="absolute top-20 right-20 w-32 h-32 bg-[#D4AF37]/5 rounded-full blur-[60px] pointer-events-none">
+        </div>
+
+        <div class="space-y-10 fade-up max-w-6xl relative z-10 tilt-element" style="transform: translateZ(20px);">
+
+            <div
+                class="inline-flex items-center gap-3 px-6 py-2 border border-[#D4AF37]/30 bg-black/40 backdrop-blur-md text-[#F3E5AB] text-[10px] font-bold tracking-[0.3em] uppercase rounded-sm shadow-2xl cursor-default hover:border-[#D4AF37]/60 transition-colors duration-500">
+                <span class="relative flex h-1.5 w-1.5">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D4AF37]"></span>
+                </span>
+                Open To Work
             </div>
-            <div class="input-box">
-                <input type="email" name="Email" placeholder="EMAIL" required>
-                <input type="text" name="Address" placeholder="ADDRESS" required>
+
+            <h1 class="text-7xl md:text-[10rem] font-extrabold tracking-tighter leading-[0.85] select-none">
+                <span class="block text-[#555] text-xl md:text-3xl font-light tracking-[0.6em] mb-6 opacity-80">HELLO I
+                    AM</span>
+
+                <span class="gold-shine">
+                    RAJ THAKUR
+                </span>
+            </h1>
+
+            <div class="flex items-center justify-center gap-6 opacity-70">
+                <div class="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50">
+                </div>
+                <p class="text-xs md:text-sm text-[#D1C4A9] font-light tracking-[0.4em] uppercase">
+                    Fullstack &nbsp;&bull;&nbsp; Data Science &nbsp;&bull;&nbsp;
+                </p>
+                <div class="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50">
+                </div>
             </div>
-            <textarea name="Message" cols="20" rows="5" placeholder="YOUR MESSAGE" spellcheck="true"></textarea>
-            <input type="submit" value="SEND" class="btn-2">
-        </form>
+
+            <div class="flex flex-wrap gap-8 justify-center mt-16">
+
+                <a href="RESUME.pdf" download
+                    class="relative px-12 py-5 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#B8860B] text-black font-bold text-xs uppercase tracking-[0.25em] hover:scale-105 transition-transform duration-500 shadow-[0_10px_30px_rgba(212,175,55,0.2)] rounded-sm group overflow-hidden">
+                    <span class="relative z-10">Download CV</span>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out">
+                    </div>
+                </a>
+
+                <a href="#contact"
+                    class="px-12 py-5 border border-[#D4AF37]/40 text-[#D4AF37] hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all duration-500 font-bold text-xs uppercase tracking-[0.25em] rounded-sm">
+                    Contact Me
+                </a>
+            </div>
+        </div>
     </section>
 
-    <!-- <------------------------------------------------------------------------------------>
+    <section id="about" class="py-40 px-6 relative z-10 perspective-container">
+        <div
+            class="max-w-6xl mx-auto glass-card p-8 md:p-16 rounded-2xl tilt-card relative overflow-hidden border-t border-primary/20 group">
 
-    <footer class="footer">
-        <div class="social">
-            <a href="https://instagram.com/raazz.15"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://snapchat.com/raazz_15"><i class="fa-brands fa-snapchat"></i></a>
-            <a href="https://github.com/raj152004"><i class="fa-brands fa-github"></i></a>
-            <a
-                href="https://www.linkedin.com/in/raj-thakur-bab210290?utm_source=share&utm_campaign=share_vgitia&utm_content=profile&utm_medium=ios_app"><i
-                    class="fa-brands fa-linkedin"></i></a>
+            <h1
+                class="absolute -top-12 -right-12 text-[8rem] md:text-[12rem] font-bold text-white/[0.03] select-none pointer-events-none z-0 tracking-tighter leading-none">
+                ABOUT
+            </h1>
+
+            <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+
+            </div>
+
+            <div class="space-y-8 tilt-element" style="transform: translateZ(40px);">
+
+                <div class="relative">
+                    <h2 class="text-5xl md:text-7xl font-bold text-textMain mb-2 tracking-tighter">ABOUT <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-700">ME</span>
+                    </h2>
+                    <div class="h-1 w-24 bg-gradient-to-r from-primary to-transparent"></div>
+                </div>
+
+                <div class="relative pl-8 border-l border-primary/30 space-y-6">
+                    <h5 class="text-lg text-primary font-bold uppercase tracking-[0.25em]">Full Stack Developer</h5>
+
+                    <p class="text-textSec leading-relaxed font-light text-sm md:text-base text-justify">
+                        Hi, I am <b class="text-white font-semibold">Raj Thakur</b> from Indore. I am pursuing my B.Tech
+                        Degree in CS
+                        from Sage University. I am a passionate Developer, dedicated to building
+                        <span class="text-primary/90 border-b border-primary/20 pb-0.5">responsive</span> and <span
+                            class="text-primary/90 border-b border-primary/20 pb-0.5">interactive</span> web
+                        applications.
+                    </p>
+
+                    <p class="text-textSec leading-relaxed font-light text-sm md:text-base text-justify">
+                        I come from a middle-class family and have a strong passion for coding,
+                        problem-solving, and learning new technologies. My hobbies include
+                        exploring web development trends and working on personal projects.
+                        My goal is to join a reputed organization and contribute to innovative projects while growing my
+                        technical expertise.
+                    </p>
+                </div>
+
+                <div class="pt-4">
+                    <p class="text-[10px] text-textSec uppercase tracking-[0.2em] mb-4">Core Technologies</p>
+                    <div class="flex gap-6 text-2xl text-textMain/40">
+                        <i
+                            class="fa-brands fa-html5 hover:text-[#E34F26] hover:scale-125 transition-all duration-300 cursor-pointer"></i>
+                        <i
+                            class="fa-brands fa-css3-alt hover:text-[#1572B6] hover:scale-125 transition-all duration-300 cursor-pointer"></i>
+                        <i
+                            class="fa-brands fa-js hover:text-[#F7DF1E] hover:scale-125 transition-all duration-300 cursor-pointer"></i>
+                        <i
+                            class="fa-brands fa-react hover:text-[#61DAFB] hover:scale-125 transition-all duration-300 cursor-pointer"></i>
+                        <i
+                            class="fa-brands fa-java hover:text-[#007396] hover:scale-125 transition-all duration-300 cursor-pointer"></i>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <p class="copyright">
-            <marquee>Copyrights &copy; Web Browser | All RightsReserved......</marquee>
+        </div>
+    </section>
+
+    <section id="skills" class="py-32 px-6 relative z-10 perspective-container">
+        <div class="max-w-7xl mx-auto">
+
+            <div class="text-center mb-20 relative">
+                <h1
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[6rem] md:text-[9rem] font-bold text-white/[0.02] pointer-events-none select-none tracking-widest z-0">
+                    SKILLS
+                </h1>
+                <div class="relative z-10">
+                    <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-4 tracking-tight drop-shadow-2xl">
+                        MY <span class="gold-shine">SKILLS</span>
+                    </h2>
+                    <div
+                        class="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full shadow-[0_0_20px_rgba(212,175,55,0.5)]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+
+                <div
+                    class="glass-card tilt-card group p-10 text-center cursor-pointer rounded-2xl relative transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-t border-white/10 border-b border-primary/20">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl">
+                    </div>
+
+                    <div class="tilt-element relative w-24 h-24 mx-auto mb-8" style="transform: translateZ(50px);">
+                        <div
+                            class="absolute inset-0 border border-dashed border-primary/30 rounded-full animate-[spin_10s_linear_infinite]">
+                        </div>
+                        <div
+                            class="absolute inset-2 bg-gradient-to-br from-black to-gray-900 rounded-full border border-primary/50 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-500">
+                            <i
+                                class="fa-solid fa-code text-3xl text-primary drop-shadow-[0_0_5px_rgba(212,175,55,1)]"></i>
+                        </div>
+                    </div>
+
+                    <div class="tilt-element space-y-4 relative z-10" style="transform: translateZ(30px);">
+                        <h3
+                            class="text-2xl font-bold text-white tracking-wide uppercase group-hover:text-primary transition-colors">
+                            Web Dev</h3>
+                        <p
+                            class="text-textSec text-sm leading-relaxed font-light opacity-80 group-hover:opacity-100 transition-opacity">
+                            Skilled in building responsive and dynamic web applications using HTML, CSS, JavaScript,
+                            with backend integration for handling server-side logic and APIs.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card tilt-card group p-10 text-center cursor-pointer rounded-2xl relative transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-t border-white/10 border-b border-primary/20">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl">
+                    </div>
+
+                    <div class="tilt-element relative w-24 h-24 mx-auto mb-8" style="transform: translateZ(50px);">
+                        <div
+                            class="absolute inset-0 border border-dashed border-primary/30 rounded-full animate-[spin_12s_linear_infinite_reverse]">
+                        </div>
+                        <div
+                            class="absolute inset-2 bg-gradient-to-br from-black to-gray-900 rounded-full border border-primary/50 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-500">
+                            <i
+                                class="fa-solid fa-laptop-code text-3xl text-primary drop-shadow-[0_0_5px_rgba(212,175,55,1)]"></i>
+                        </div>
+                    </div>
+
+                    <div class="tilt-element space-y-4 relative z-10" style="transform: translateZ(30px);">
+                        <h3
+                            class="text-2xl font-bold text-white tracking-wide uppercase group-hover:text-primary transition-colors">
+                            Programming</h3>
+                        <p
+                            class="text-textSec text-sm leading-relaxed font-light opacity-80 group-hover:opacity-100 transition-opacity">
+                            Proficient in <span class="text-white font-semibold">Python, C, and C++</span> with a strong
+                            grasp of programming fundamentals, problem-solving, data structures, and Git/GitHub.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card tilt-card group p-10 text-center cursor-pointer rounded-2xl relative transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-t border-white/10 border-b border-primary/20">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl">
+                    </div>
+
+                    <div class="tilt-element relative w-24 h-24 mx-auto mb-8" style="transform: translateZ(50px);">
+                        <div
+                            class="absolute inset-0 border border-dashed border-primary/30 rounded-full animate-[spin_15s_linear_infinite]">
+                        </div>
+                        <div
+                            class="absolute inset-2 bg-gradient-to-br from-black to-gray-900 rounded-full border border-primary/50 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-500">
+                            <i
+                                class="fa-solid fa-chart-line text-3xl text-primary drop-shadow-[0_0_5px_rgba(212,175,55,1)]"></i>
+                        </div>
+                    </div>
+
+                    <div class="tilt-element space-y-4 relative z-10" style="transform: translateZ(30px);">
+                        <h3
+                            class="text-2xl font-bold text-white tracking-wide uppercase group-hover:text-primary transition-colors">
+                            Data Analysis</h3>
+                        <p
+                            class="text-textSec text-sm leading-relaxed font-light opacity-80 group-hover:opacity-100 transition-opacity">
+                            Knowledge of Data Scienceconcepts, computer networks, and practical experience using MS
+                            Excel, Word, and PowerPoint for documentation.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-32 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-end justify-between mb-16 border-b border-primary/20 pb-4">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-2">TECHNICAL <span
+                            class="gold-shine">PROJECTS</span></h2>
+                </div>
+                <a href="https://github.com/raj152004" target="_blank"
+                    class="hidden md:block text-primary font-bold hover:text-white transition-colors text-sm uppercase tracking-widest">View
+                    Github <i class="fa-solid fa-arrow-right ml-2"></i></a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div
+                    class="glass-card tilt-card overflow-hidden group hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="h-48 bg-gray-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=600&auto=format&fit=crop"
+                            alt="Radio Studio"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-6 z-20 tilt-element">
+                            <i
+                                class="fa-solid fa-radio text-3xl text-primary mb-2 drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-textMain mb-1">HRM Galaxy</h3>
+                        <p class="text-xs font-bold text-primary mb-3 uppercase tracking-wider">Online Radio Streaming
+                        </p>
+                        <p class="text-textSec text-sm mb-4 line-clamp-3 font-light">
+                            Galaxy FM is a web-based online radio streaming platform integrated into the HRM Galaxy
+                            system.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card tilt-card overflow-hidden group hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="h-48 bg-gray-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop"
+                            alt="Gym Equipment"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-6 z-20 tilt-element">
+                            <i
+                                class="fa-solid fa-dumbbell text-3xl text-primary mb-2 drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-textMain mb-1">Gym Web</h3>
+                        <p class="text-xs font-bold text-primary mb-3 uppercase tracking-wider">Responsive Website</p>
+                        <p class="text-textSec text-sm mb-4 line-clamp-3 font-light">
+                            A responsive gym website showcasing programs, schedules, pricing, and contact sections.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card tilt-card overflow-hidden group hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="h-48 bg-gray-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=600&auto=format&fit=crop"
+                            alt="Shopping"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-6 z-20 tilt-element">
+                            <i
+                                class="fa-solid fa-cart-shopping text-3xl text-primary mb-2 drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-textMain mb-1">Shop Zone</h3>
+                        <p class="text-xs font-bold text-primary mb-3 uppercase tracking-wider">E-Commerce Website</p>
+                        <p class="text-textSec text-sm mb-4 line-clamp-3 font-light">
+                            Featuring secure login, product listings, and a contact form, optimized for smooth
+                            performance.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card tilt-card overflow-hidden group hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="h-48 bg-gray-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?q=80&w=600&auto=format&fit=crop"
+                            alt="Helicopter"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-6 z-20 tilt-element">
+                            <i
+                                class="fa-solid fa-helicopter text-3xl text-primary mb-2 drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-textMain mb-1">Helicopter Game</h3>
+                        <p class="text-xs font-bold text-primary mb-3 uppercase tracking-wider">2D Game</p>
+                        <p class="text-textSec text-sm mb-4 line-clamp-3 font-light">
+                            A 2D helicopter game built using HTML5 Canvas and JavaScript with physics and gravity.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">Canvas</span><span class="tag">JS</span><span class="tag">Logic</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-32 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-4"><span
+                        class="gold-shine">CERTIFICATIONS</span></h2>
+                <div class="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card tilt-card group overflow-hidden cursor-pointer rounded-lg"
+                    onclick="openLightbox('del.jpeg')">
+                    <div class="relative h-56 w-full overflow-hidden bg-gray-900">
+                        <img src="del.jpeg" alt="Cybersecurity Task"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <span
+                                class="border border-primary text-primary rounded-none px-6 py-2 transform scale-0 group-hover:scale-100 transition-transform duration-300 font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-dark">
+                                View
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <span
+                                class="text-[10px] font-bold text-primary border border-primary/20 px-2 py-1 rounded uppercase tracking-wider">Achievement</span>
+                            <span class="text-xs font-bold text-textSec">2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-textMain mb-2">Cyber Security</h3>
+                        <p class="text-textSec text-xs font-light">Cybersecurity tasks in collaboration with Deloitte.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card tilt-card group overflow-hidden cursor-pointer rounded-lg"
+                    onclick="openLightbox('Oracle.jpeg')">
+                    <div class="relative h-56 w-full overflow-hidden bg-gray-900">
+                        <img src="Oracle.jpeg" alt="Oracle"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <span
+                                class="border border-primary text-primary rounded-none px-6 py-2 transform scale-0 group-hover:scale-100 transition-transform duration-300 font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-dark">
+                                View
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <span
+                                class="text-[10px] font-bold text-primary border border-primary/20 px-2 py-1 rounded uppercase tracking-wider">Achievement</span>
+                            <span class="text-xs font-bold text-textSec">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-textMain mb-2">Oracle University</h3>
+                        <p class="text-textSec text-xs font-light">Successfully Completed a Data Science Certification.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card tilt-card group overflow-hidden cursor-pointer rounded-lg"
+                    onclick="openLightbox('Full.jpeg')">
+                    <div class="relative h-56 w-full overflow-hidden bg-gray-900">
+                        <img src="Full.jpeg" alt="Full Stack"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <span
+                                class="border border-primary text-primary rounded-none px-6 py-2 transform scale-0 group-hover:scale-100 transition-transform duration-300 font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-dark">
+                                View
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <span
+                                class="text-[10px] font-bold text-primary border border-primary/20 px-2 py-1 rounded uppercase tracking-wider">Achievement</span>
+                            <span class="text-xs font-bold text-textSec">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-textMain mb-2">Full Stack Development</h3>
+                        <p class="text-textSec text-xs font-light">Full Stack Development program by Sunstone (SAGE
+                            University).</p>
+                    </div>
+                </div>
+
+                <div class="glass-card tilt-card group overflow-hidden cursor-pointer rounded-lg"
+                    onclick="openLightbox('AI.jpeg')">
+                    <div class="relative h-56 w-full overflow-hidden bg-gray-900">
+                        <img src="AI.jpeg" alt="AI"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <span
+                                class="border border-primary text-primary rounded-none px-6 py-2 transform scale-0 group-hover:scale-100 transition-transform duration-300 font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-dark">
+                                View
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <span
+                                class="text-[10px] font-bold text-primary border border-primary/20 px-2 py-1 rounded uppercase tracking-wider">Achievement</span>
+                            <span class="text-xs font-bold text-textSec">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-textMain mb-2">Generative AI Studio</h3>
+                        <p class="text-textSec text-xs font-light">Generative AI Studio certification through
+                            Simplilearn.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card tilt-card group overflow-hidden cursor-pointer rounded-lg"
+                    onclick="openLightbox('Python.jpeg')">
+                    <div class="relative h-56 w-full overflow-hidden bg-gray-900">
+                        <img src="Python.jpeg" alt="Python"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <span
+                                class="border border-primary text-primary rounded-none px-6 py-2 transform scale-0 group-hover:scale-100 transition-transform duration-300 font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-dark">
+                                View
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <span
+                                class="text-[10px] font-bold text-primary border border-primary/20 px-2 py-1 rounded uppercase tracking-wider">Achievement</span>
+                            <span class="text-xs font-bold text-textSec">2024</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-textMain mb-2">Python Programming</h3>
+                        <p class="text-textSec text-xs font-light">Completed Python programming training.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card tilt-card group overflow-hidden cursor-pointer rounded-lg"
+                    onclick="openLightbox('c.jpeg')">
+                    <div class="relative h-56 w-full overflow-hidden bg-gray-900">
+                        <img src="c.jpeg" alt="C/C++"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <span
+                                class="border border-primary text-primary rounded-none px-6 py-2 transform scale-0 group-hover:scale-100 transition-transform duration-300 font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-dark">
+                                View
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <span
+                                class="text-[10px] font-bold text-primary border border-primary/20 px-2 py-1 rounded uppercase tracking-wider">Achievement</span>
+                            <span class="text-xs font-bold text-textSec">August</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-textMain mb-2">C & C++ Programming</h3>
+                        <p class="text-textSec text-xs font-light">Focus on core concepts and object-oriented
+                            principles.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-40 px-6 relative z-10 flex justify-center items-center perspective-container">
+        <div class="max-w-4xl w-full glass-card p-12 md:p-16 rounded-2xl tilt-card relative overflow-hidden group">
+
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary/10 to-transparent opacity-20 pointer-events-none">
+            </div>
+
+            <div class="relative z-20 text-center mb-12 tilt-element" style="transform: translateZ(50px);">
+                <h2
+                    class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#FFF] via-[#D4AF37] to-[#8B6914] drop-shadow-2xl">
+                    CONTACT
+                </h2>
+                <div class="flex items-center justify-center gap-4 mt-2">
+                    <div class="h-px w-12 bg-primary/50"></div>
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase">Get In Touch</span>
+                    <div class="h-px w-12 bg-primary/50"></div>
+                </div>
+            </div>
+
+            <form
+                action="https://script.google.com/macros/s/AKfycbzbWYGO0cA4_Ifan0RlmYYz3d-KiqKXOPdLv9r9AgOR7ZGq1QKDkmgqSFcD7Zc6gIEkAg/exec"
+                method="post" name="contact-form" class="space-y-8 relative z-10">
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="relative group tilt-element" style="transform: translateZ(20px);">
+                        <div
+                            class="absolute inset-0 bg-black/80 rounded-lg shadow-[inset_0_2px_10px_rgba(0,0,0,1)] border-b border-white/5">
+                        </div>
+                        <div class="relative flex items-center h-full px-6 py-4">
+                            <i
+                                class="fa-solid fa-user text-primary/60 text-sm mr-4 group-focus-within:text-primary transition-colors"></i>
+                            <input type="text" name="Full Name" placeholder="ENTER YOUR NAME" required
+                                class="w-full bg-transparent text-textMain focus:outline-none placeholder-gray-600 text-xs font-bold uppercase tracking-widest border-none ring-0">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-500 group-focus-within:w-full">
+                        </div>
+                    </div>
+
+                    <div class="relative group tilt-element" style="transform: translateZ(20px);">
+                        <div
+                            class="absolute inset-0 bg-black/80 rounded-lg shadow-[inset_0_2px_10px_rgba(0,0,0,1)] border-b border-white/5">
+                        </div>
+                        <div class="relative flex items-center h-full px-6 py-4">
+                            <i
+                                class="fa-solid fa-phone text-primary/60 text-sm mr-4 group-focus-within:text-primary transition-colors"></i>
+                            <input type="text" name="Phone Number" placeholder="PHONE NUMBER" required
+                                class="w-full bg-transparent text-textMain focus:outline-none placeholder-gray-600 text-xs font-bold uppercase tracking-widest border-none ring-0">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-500 group-focus-within:w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group tilt-element" style="transform: translateZ(20px);">
+                    <div
+                        class="absolute inset-0 bg-black/80 rounded-lg shadow-[inset_0_2px_10px_rgba(0,0,0,1)] border-b border-white/5">
+                    </div>
+                    <div class="relative flex items-center h-full px-6 py-4">
+                        <i
+                            class="fa-solid fa-envelope text-primary/60 text-sm mr-4 group-focus-within:text-primary transition-colors"></i>
+                        <input type="email" name="Email" placeholder="EMAIL ADDRESS" required
+                            class="w-full bg-transparent text-textMain focus:outline-none placeholder-gray-600 text-xs font-bold uppercase tracking-widest border-none ring-0">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-500 group-focus-within:w-full">
+                    </div>
+                </div>
+
+                <div class="relative group tilt-element" style="transform: translateZ(20px);">
+                    <div
+                        class="absolute inset-0 bg-black/80 rounded-lg shadow-[inset_0_2px_10px_rgba(0,0,0,1)] border-b border-white/5">
+                    </div>
+                    <div class="relative flex items-start h-full px-6 py-4">
+                        <i
+                            class="fa-solid fa-pen-to-square text-primary/60 text-sm mr-4 mt-1 group-focus-within:text-primary transition-colors"></i>
+                        <textarea name="Message" cols="20" rows="4" placeholder="YOUR MESSAGE" spellcheck="true"
+                            class="w-full bg-transparent text-textMain focus:outline-none placeholder-gray-600 text-xs font-bold uppercase tracking-widest border-none ring-0 resize-none"></textarea>
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-500 group-focus-within:w-full">
+                    </div>
+                </div>
+
+                <div class="tilt-element pt-4" style="transform: translateZ(40px);">
+                    <button type="submit"
+                        class="relative w-full py-5 rounded-lg group overflow-hidden shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:shadow-[0_10px_50px_rgba(212,175,55,0.5)] transition-all duration-500">
+
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-[#8B6914] via-[#D4AF37] to-[#8B6914] transition-all duration-300">
+                        </div>
+
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out">
+                        </div>
+
+                        <span
+                            class="relative z-10 text-black font-extrabold text-sm uppercase tracking-[0.3em] group-hover:tracking-[0.5em] transition-all duration-300">
+                            Send Message
+                        </span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center relative z-10 border-t border-white/5 bg-dark/50 backdrop-blur-sm">
+        <div class="flex justify-center gap-6 mb-6">
+            <a href="https://instagram.com/raazz.15"
+                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-textMain hover:bg-primary hover:text-dark hover:-translate-y-2 transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)]"><i
+                    class="fa-brands fa-instagram text-xl"></i></a>
+            <a href="https://github.com/raj152004"
+                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-textMain hover:bg-primary hover:text-dark hover:-translate-y-2 transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)]"><i
+                    class="fa-brands fa-github text-xl"></i></a>
+            <a href="https://www.linkedin.com/in/raj-thakur-bab210290"
+                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-textMain hover:bg-primary hover:text-dark hover:-translate-y-2 transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)]"><i
+                    class="fa-brands fa-linkedin text-xl"></i></a>
+        </div>
+        <p class="text-xs text-textSec font-light tracking-wide">
+            <marquee>&copy; 2026 Raj Thakur | All Rights Reserved</marquee>
         </p>
     </footer>
+
+    <div id="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Certificate View">
+    </div>
+
     <script src="script.js" defer></script>
 </body>
 
