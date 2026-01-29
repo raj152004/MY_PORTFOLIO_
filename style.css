@@ -926,3 +926,25 @@ body {
         padding-bottom: 1.5rem !important;
     }
 }
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media screen and (min-width: 765px) {
+    .certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .certifications-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.glass-card .relative {
+    height: 14rem;
+}
