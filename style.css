@@ -933,18 +933,35 @@ body {
     gap: 2rem;
 }
 
-@media screen and (min-width: 765px) {
+@media (min-width: 768px) {
     .certifications-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
     .certifications-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-.glass-card .relative {
-    height: 14rem;
+@media (min-width: 450px) and (max-width: 700px) {
+    .certifications-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .certifications-grid .relative.h-56 {
+        height: 10rem !important;
+    }
+
+    .certifications-grid .p-6 {
+        padding: 1rem !important;
+    }
+
+    .certifications-grid h3 {
+        font-size: 0.9rem !important;
+        margin-bottom: 4px !important;
+    }
 }
